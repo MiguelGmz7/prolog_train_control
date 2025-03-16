@@ -8,23 +8,16 @@ const item = process.argv[2];
 
 // Program and goal
 const program = `
-    % Products
-    item(id(1), name(bread)).
-    item(id(2), name(water)).
-    item(id(3), name(apple)).
-    % Shops
-    shop(id(1), name(tau), location(spain)).
-    shop(id(2), name(swi), location(netherlands)).
-    % Stock
-    stock(item(1), shop(1), count(23), price(0.33)).
-    stock(item(2), shop(1), count(17), price(0.25)).
-    stock(item(2), shop(2), count(34), price(0.31)).
-    stock(item(3), shop(2), count(15), price(0.45)).
+    % fruit/1
+    fruit(apple).
+    fruit(banana).
+    fruit(pear).
+
+    % fruit_in/2
+    fruits(Xs, X) :- member(X, Xs), fruit(X).
 `;
 const goal = `
-    item(id(ItemID), name(${item})),
-    stock(item(ItemID), shop(ShopID), _, price(Price)),
-    shop(id(ShopID), name(Shop), _).
+    fruit(X).
 `;
 
 // Consult program, query goal, and show answers
